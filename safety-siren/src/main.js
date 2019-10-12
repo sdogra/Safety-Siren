@@ -2,6 +2,9 @@ import Vue from "vue";
 import firebase from 'firebase';
 import App from "./App.vue";
 import router from "./router";
+import GoogleMaps from "./views/GoogleMaps";
+
+Vue.component('GoogleMaps', GoogleMaps);
 
 
 Vue.config.productionTip = false;
@@ -26,6 +29,7 @@ firebase.analytics();
 firebase.auth().onAuthStateChanged(() => {
   if (!app){
     app = new Vue({
+      el: '#app',
       router,
       render: h => h(App)
     }).$mount("#app");
