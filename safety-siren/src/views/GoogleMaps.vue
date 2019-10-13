@@ -8,25 +8,25 @@
 </style>
 
 <script>
-let sanfrancisco = [37.782685, -122.411364];
+let annarbor = [42.281420, -83.748480];
  export default {
      props: {
      'latitude': {
        type: Number,
        default() {
-         return sanfrancisco[0]
+         return annarbor[0]
        }
      },
      'longitude': {
        type: Number,
        default() {
-         return sanfrancisco[1]
+         return annarbor[1]
        }
      },
      'zoom': {
        type: Number,
        default() {
-         return 14
+         return 16
        }
      },
    },
