@@ -10,7 +10,6 @@
 </template>
 
 <style>
-
     .addAlert{
         position: absolute;
         margin-left: 50px;
@@ -26,6 +25,7 @@
 <script>
 import Vue from "vue";
 import Sidebar from "./Sidebar";
+import axios from "axios";
 // let annarbor = [42.281420, -83.748480];
 
  export default {
