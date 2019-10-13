@@ -10,6 +10,8 @@
 
 <script>
 import firebase from 'firebase';
+import router from "../router";
+
 export default {
     name: 'signUp',
     data(){
@@ -19,7 +21,7 @@ export default {
         signUp: function(){
             firebase.auth().createUserWithEmailAndPassword(this.email, this.password).then(
                 function(user){
-                    alert("Your account has been created!");
+                    router.push('/googleMaps');
                 },
                 function (err){
                     alert("Oops. " + err.message);

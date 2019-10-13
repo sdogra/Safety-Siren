@@ -4,7 +4,7 @@
        <input type="number" step="0.0001" placeholder = "Latitude" class="form-control" v-model="latitude">
        <input type="number" step="0.0001" placeholder = "Longitude" class="form-control" v-model="longitude">
        <button @click="addMarker" class="btn btn-danger">Add marker</button>
-       <button @click="clearMarkers" class="btn btn-default">Clear markers</button>
+       <!-- <button @click="clearMarkers" class="btn btn-default">Clear markers</button> -->
    </div>
 </template>
 
