@@ -3,14 +3,27 @@ import firebase from 'firebase';
 import App from "./App.vue";
 import router from "./router";
 import GoogleMaps from "./views/GoogleMaps";
+import Sidebar from "./views/Sidebar";
 
 Vue.component('GoogleMaps', GoogleMaps);
+Vue.component("Sidebar", Sidebar);
 
 
 Vue.config.productionTip = false;
 
 let app = '';
 
+//Set up EventBus
+window.EventBus = new Vue({
+  data(){
+    return {
+      annarbor: [42.281420, -83.748480]
+    }
+  }
+})
+
+
+//Configure Firebase
 const firebaseConfig = {
   apiKey: "AIzaSyCuhitY3EqVXoEagvtWffJuaMAdaPyEEro",
   authDomain: "safetysiren.firebaseapp.com",
