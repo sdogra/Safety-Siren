@@ -25,7 +25,7 @@
 <script>
 import Vue from "vue";
 import Sidebar from "./Sidebar";
-import axios from "axios";
+import axios from "../axios-orders";
 // let annarbor = [42.281420, -83.748480];
 
  export default {
@@ -73,7 +73,24 @@ import axios from "axios";
        return {};
    },
    methods: {
+       getMarkers(){
+           
+       }
        makeMarker(latitude, longitude){
+           //const path = 'http://localhost:5000/storeCoordinates';
+           axios.post('/posts.json', {
+               coordinates: {
+                    latitude: latitude,
+                    longitude: longitude
+               }
+           })
+           .then(response => {
+               console.log('sent coordinates');
+           })
+           .catch(e => {
+               this.errors.push(e)
+           })
+
            return new google.maps.Marker({
                position: new google.maps.LatLng(latitude, longitude),
                icon: null,

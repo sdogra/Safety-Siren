@@ -1,0 +1,12 @@
+Flask==1.0.2
+Jinja2==2.10
+MarkupSafe==1.0
+Werkzeug==0.14.1
+argparse==1.4.0
+gunicorn==19.9.0
+itsdangerous==1.1.0
+requests==2.20.0
+billboard.py==5.0.0
+python-firebase==1.2
+wsgiref==0.1.2
+flask_cors==3.0.8
