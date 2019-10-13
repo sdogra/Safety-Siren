@@ -88,10 +88,12 @@ import axios from "../axios-orders";
                 //alert(JSON.stringify(response, null, 4));
                 console.log(Object.keys(response.data));
                 console.log(response.data);
-                const keys = Object.keys(response.data.coordinates);
+                const keys = Object.keys(response.data);
+                //console.log(response.data['-Lr2Yu-ICPB2odxpcVGx'].coordinates.latitude);
                 for (const key of keys) {
-                    console.log(response.data.key.coordinates)
-                    //this.addPreviousMarkers(key.coordinates.latitude, key.coordinates.longitude);
+                    console.log(response.data[key].coordinates.latitude);
+                    console.log(response.data[key].coordinates.longitude);
+                    this.addPreviousMarkers(response.data[key].coordinates.latitude, response.data[key].coordinates.longitude);
                 }
             });
        },
