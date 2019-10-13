@@ -52,12 +52,17 @@ import axios from "../axios-orders";
        }
      },
    },
+   beforeMount() {
+       this.getMarkers();
+   },
    mounted() {
        this.$markers = [];
      this.$map = new google.maps.Map(document.getElementById('map'), {
        center: new google.maps.LatLng(this.latitude, this.longitude),
        zoom: this.zoom
      });
+
+    this.addPreviousMarkers();
      Vue.nextTick().then(()=>{
          this.clearMarkers();
      });
@@ -77,8 +82,27 @@ import axios from "../axios-orders";
    },
    methods: {
        getMarkers(){
-           
-       }
+           axios.get('/posts.json')
+            .then((response) => {
+                console.log("response: " + response)
+                //alert(JSON.stringify(response, null, 4));
+                console.log(Object.keys(response.data));
+                console.log(response.data);
+                const keys = Object.keys(response.data.coordinates);
+                for (const key of keys) {
+                    console.log(response.data.key.coordinates)
+                    //this.addPreviousMarkers(key.coordinates.latitude, key.coordinates.longitude);
+                }
+            });
+       },
+       addPreviousMarkers(latitude, longitude) {
+           return new google.maps.Marker({
+               position: new google.maps.LatLng(latitude, longitude),
+               icon: null,
+               map: this.$map,
+               title: null,
+           });
+       },
        makeMarker(latitude, longitude){
            //const path = 'http://localhost:5000/storeCoordinates';
            axios.post('/posts.json', {
