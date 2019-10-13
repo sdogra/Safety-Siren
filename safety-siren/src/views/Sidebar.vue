@@ -9,13 +9,20 @@
 </template>
 
 <style>
+    h1{
+        margin-top: 15px;
+    }
     .form-control{
         text-align: center;
-        padding: 20px;
-        margin: 10px;
+        padding: 15px;
+        margin: 20px auto;
+        background: #DCDCDC;
     }
     .btn-danger{
         margin: 20px;
+    }
+    .btn-default{
+        background: #DCDCDC;
     }
 </style>
 

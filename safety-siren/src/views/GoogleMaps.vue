@@ -1,6 +1,6 @@
 <template>
    <div class = "row">
-       <div class = "col-4 addAlert">
+       <div class = "col-4 addAlert rounded">
            <Sidebar/>
        </div>
        <div class = "col-8 mapView">
@@ -10,10 +10,13 @@
 </template>
 
 <style>
+
     .addAlert{
+        font-family: 'Francois One', sans-serif;
         position: absolute;
         margin-left: 50px;
         justify-content: center;
+        background: white;
     }
     
     .mapView{
