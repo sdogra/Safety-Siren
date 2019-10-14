@@ -27,6 +27,7 @@
 </style>
 
 <script>
+import GoogleMaps from "./GoogleMaps";
  export default {
    data(){
       return {
@@ -43,7 +44,16 @@
        },
        clearMarkers(){
            EventBus.$emit('clear-markers');
+       },
+       created(){
+           EventBus.$on('map-clicked', (data)=>{
+               console.log(data.latitude);
+               this.latitude = data.latitude;
+               this.longitude = data.longitude;
+       });
        }
+       
+    
    }
  }
 </script>

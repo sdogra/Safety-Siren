@@ -10,7 +10,6 @@
 </template>
 
 <style>
-
     .addAlert{
         font-family: 'Francois One', sans-serif;
         position: absolute;
@@ -32,6 +31,7 @@ import axios from "../axios-orders";
 // let annarbor = [42.281420, -83.748480];
 
  export default {
+     name: "GoogleMaps",
      props: {
      'latitude': {
        type: Number,
@@ -63,9 +63,19 @@ import axios from "../axios-orders";
      });
 
     this.addPreviousMarkers();
+    
+    google.maps.event.addListener(this.$map, 'click', function(event) {
+        EventBus.$emit('map-clicked', {
+               lat: event.latLng.lat(),
+               long: event.latLng.lng()
+           });
+    alert("Latitude: " + event.latLng.lat() + " " + ", longitude: " + event.latLng.lng());
+    });
+
      Vue.nextTick().then(()=>{
          this.clearMarkers();
      });
+     
    },
    created(){
        EventBus.$on('clear-markers', ()=>{
@@ -76,6 +86,7 @@ import axios from "../axios-orders";
            let marker = this.makeMarker(data.latitude, data.longitude);
            this.$markers.push(marker);
        });
+
    },
    data(){
        return {};
@@ -84,15 +95,8 @@ import axios from "../axios-orders";
        getMarkers(){
            axios.get('/posts.json')
             .then((response) => {
-                console.log("response: " + response)
-                //alert(JSON.stringify(response, null, 4));
-                console.log(Object.keys(response.data));
-                console.log(response.data);
                 const keys = Object.keys(response.data);
-                //console.log(response.data['-Lr2Yu-ICPB2odxpcVGx'].coordinates.latitude);
                 for (const key of keys) {
-                    console.log(response.data[key].coordinates.latitude);
-                    console.log(response.data[key].coordinates.longitude);
                     this.addPreviousMarkers(response.data[key].coordinates.latitude, response.data[key].coordinates.longitude);
                 }
             });
@@ -131,7 +135,7 @@ import axios from "../axios-orders";
            for (let i = 0; i < this.$markers.length; i++){
                this.$markers[i].setMap(null);
            }
-       }
+       },
    }
  }
  
